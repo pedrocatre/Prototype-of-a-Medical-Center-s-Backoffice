@@ -1,0 +1,22 @@
+<html>
+<head><title>centrom</title>
+
+</head>
+
+<body>
+	<h1>Centro Medico Specialty</h1>
+	<h1>Title: {{ specialty.title }}</h1>
+	<h2>description</h2>
+	<p>{{ description }}</p>
+	{% if query_set %}
+		<h2>subspecialties</h2>
+		<ul>
+	      {% for item in query_set %}
+	      	<li>{{ item.title }}</li>
+	
+	      {% endfor %}
+	    </ul>
+    {% endif %}
+</body>
+
+</html>

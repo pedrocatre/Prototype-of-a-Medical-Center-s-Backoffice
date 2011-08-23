@@ -13,6 +13,14 @@
         <li><img src="../site_media/images/healthworkers/151877_460s.jpg" /></li>
       {% endfor %}
     </ul>
+    <h2>Specialties</h2>
+    <ul>
+      {% for clinic_specialty in clinic_specialties %}
+	      {% if clinic_specialty.is_active %}
+	      	<a href="/specialty/{{ clinic_specialty.slug }}">{{ clinic_specialty.title }}</a>
+	      {% endif %}
+      {% endfor %}
+    </ul>
 	<h2>done</h2>
 	<img src="{{ health_workers.image }}" />
 </body>

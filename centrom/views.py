@@ -21,11 +21,32 @@ import smtplib
 def main_page(request):
     
     health_workers = HealthWorker.objects.order_by('-id')
+    clinic_specialties = Specialty.objects.all()
+    
     variables = RequestContext(request, {
-                                         'health_workers': health_workers
+                                         'health_workers': health_workers,
+                                         'clinic_specialties': clinic_specialties,
                                          })
     #output = u'''<html> <head>%s</head><p>what</p></html>''' % (u'Django bookmarks')
     return render_to_response(
                               'main_page.html',
                               variables
                              )
+    
+def specialty_page(request, slug):
+    specialty = get_object_or_404(Specialty, slug=slug)
+    description = specialty.description
+    title = specialty.title
+    query_set = specialty.subspecialty_set.all() # set is automatically created when I created the foreign key in models
+    
+    variables = RequestContext(request, {
+                                         'title':title,
+                                         'description': description,
+                                         'query_set':query_set,
+                                         })
+    #output = u'''<html> <head>%s</head><p>what</p></html>''' % (u'Django bookmarks')
+    return render_to_response(
+                              'specialty_page.html',
+                              variables
+                             )
+    

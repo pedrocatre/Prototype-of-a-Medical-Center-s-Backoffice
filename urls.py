@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     
     # Browsing
     (r'^$', main_page),
+    (r'^specialty/(\w+)/$', specialty_page), # \w+ means any string consisting of alphanumeric characters
     
     
     
