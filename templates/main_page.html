@@ -1,0 +1,20 @@
+<html>
+<head><title>centrom</title>
+
+</head>
+
+<body>
+	<h1>Welcome to Centro Medico de Tondela1</h1>
+	<h2>{{ health_workers.image }}</h2>
+	<ul>
+      {% for health_worker in health_workers %}
+      	<li>../static/{{ health_worker.image.url }}</li>
+        <li><img src="/site_media/{{ health_worker.image.url }}" /></li>
+        <li><img src="../site_media/images/healthworkers/151877_460s.jpg" /></li>
+      {% endfor %}
+    </ul>
+	<h2>done</h2>
+	<img src="{{ health_workers.image }}" />
+</body>
+
+</html>
